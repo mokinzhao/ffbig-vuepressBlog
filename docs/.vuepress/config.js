@@ -2,7 +2,7 @@
  * @Author: mokinzhao
  * @Date: 2019-09-24 15:02:43
  * @Description:
- * @LastEditTime: 2019-09-24 16:34:59
+ * @LastEditTime: 2019-09-24 17:36:39
  */
 module.exports = {
   title: "全栈大前端",
@@ -46,7 +46,28 @@ module.exports = {
       { text: "node", link: "/accumulate/" }, // 内部链接 以docs为根目录
       { text: "算法", link: "/accumulate/" }, // 内部链接 以docs为根目录
       { text: "安全", link: "/accumulate/" }, // 内部链接 以docs为根目录
-      { text: "跨端综合", link: "/accumulate/" }, // 内部链接 以docs为根目录
+      { text: "面试", link: "/accumulate/" }, // 内部链接 以docs为根目录
+      {
+        text: "跨端综合",
+        items: [
+          {
+            text: "ReactNative",
+            link: "https://facebook.github.io/react-native/"
+          },
+          {
+            text: "Flutter",
+            link: "https://flutter.dev/"
+          },
+          {
+            text: "Taro",
+            link: "https://nervjs.github.io/taro/"
+          },
+          {
+            text: "Uni-app",
+            link: "https://uniapp.dcloud.io/"
+          }
+        ]
+      },
       {
         text: "基础综合",
         items: [
@@ -57,7 +78,7 @@ module.exports = {
           },
           {
             text: "设计模式",
-            link: "/accumulate/"
+            link: "https://juejin.im/post/5c2e10a76fb9a049c0432697"
           }
         ]
       },
