@@ -2,7 +2,7 @@
  * @Author: mokinzhao
  * @Date: 2019-09-24 15:02:43
  * @Description:
- * @LastEditTime: 2019-09-24 17:36:39
+ * @LastEditTime: 2019-09-28 16:18:57
  */
 module.exports = {
   title: "全栈大前端",
@@ -15,38 +15,21 @@ module.exports = {
   markdown: {
     lineNumbers: true // 代码块显示行号
   },
+  plugins: ["autobar"],
   themeConfig: {
     sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
     lastUpdated: "Last Updated", // 文档更新时间：每个文件git最后提交的时间
-    sidebar: {
-      // docs文件夹下面的accumulate文件夹 文档中md文件 书写的位置(命名随意)
-      "/accumulate/": [
-        "/accumulate/", // accumulate文件夹的README.md 不是下拉框形式
-        {
-          title: "内容待定",
-          children: [
-            "/accumulate/JS/test" // 以docs为根目录来查找文件
-            // 上面地址查找的是：docs>accumulate>JS>test.md 文件
-            // 自动加.md 每个子选项的标题 是该md文件中的第一个h1/h2/h3标题
-          ]
-        }
-      ],
-      // docs文件夹下面的algorithm文件夹 这是第二组侧边栏 跟第一组侧边栏没关系
-      "/algorithm/": [
-        "/algorithm/",
-        {
-          title: "内容待定2",
-          children: ["/accumulate/JS/test"]
-        }
-      ]
-    },
+    // sidebar: {
+    //   "/VUE/": [""],
+    //   "/React/": [{ title: "Classes", children: ["", "classes/member"] }]
+    // },
     nav: [
       { text: "vue", link: "/algorithm/" }, // 内部链接 以docs为根目录
-      { text: "react", link: "/accumulate/" }, // 内部链接 以docs为根目录
-      { text: "node", link: "/accumulate/" }, // 内部链接 以docs为根目录
-      { text: "算法", link: "/accumulate/" }, // 内部链接 以docs为根目录
-      { text: "安全", link: "/accumulate/" }, // 内部链接 以docs为根目录
-      { text: "面试", link: "/accumulate/" }, // 内部链接 以docs为根目录
+      { text: "React", link: "/React/" },
+      { text: "Node", link: "/Node/" },
+      { text: "算法", link: "https://facebook.github.io/react-native/" },
+      { text: "安全", link: "https://nervjs.github.io/taro/" },
+      { text: "面试", link: "https://uniapp.dcloud.io/" },
       {
         text: "跨端综合",
         items: [
@@ -71,7 +54,10 @@ module.exports = {
       {
         text: "基础综合",
         items: [
-          { text: "网络协议", link: "/accumulate/" },
+          {
+            text: "网络协议",
+            link: "https://juejin.im/post/5c2e10a76fb9a049c0432697"
+          },
           {
             text: "数据结构",
             link: "/accumulate/"

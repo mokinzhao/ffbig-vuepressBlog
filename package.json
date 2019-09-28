@@ -7,5 +7,8 @@
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
     "deploy": "bash deploy.sh"
+  },
+  "devDependencies": {
+    "vuepress-plugin-autobar": "github:boboidream/vuepress-bar"
   }
 }
