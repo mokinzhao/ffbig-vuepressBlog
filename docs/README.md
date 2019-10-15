@@ -2,9 +2,9 @@
 home: true
 heroImage: /bg.jpg
 heroText: 全栈大前端
-tagline: 分享互助，乐观向上
+tagline: 分享互助，学练结合
 actionText: 开始旅程 →
-actionLink: /VUE/
+actionLink: /20-VUE/
 features:
   - title: 精简梳理
     details: 主题突出，知识点鲜明，极简概括出整个大前端知识点脉络.

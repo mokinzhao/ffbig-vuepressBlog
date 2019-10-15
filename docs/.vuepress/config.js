@@ -2,7 +2,7 @@
  * @Author: mokinzhao
  * @Date: 2019-09-24 15:02:43
  * @Description:
- * @LastEditTime: 2019-09-28 16:18:57
+ * @LastEditTime: 2019-09-29 18:52:19
  */
 module.exports = {
   title: "全栈大前端",
@@ -19,14 +19,11 @@ module.exports = {
   themeConfig: {
     sidebarDepth: 2, // e'b将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
     lastUpdated: "Last Updated", // 文档更新时间：每个文件git最后提交的时间
-    // sidebar: {
-    //   "/VUE/": [""],
-    //   "/React/": [{ title: "Classes", children: ["", "classes/member"] }]
-    // },
+    // sidebar: "auto",
     nav: [
-      { text: "vue", link: "/algorithm/" }, // 内部链接 以docs为根目录
-      { text: "React", link: "/React/" },
-      { text: "Node", link: "/Node/" },
+      // { text: "Vue", link: "/20-VUE/" }, // 内部链接 以docs为根目录
+      // { text: "React", link: "/30-React/" },
+      { text: "大纲", link: "/docs/README" },
       { text: "算法", link: "https://facebook.github.io/react-native/" },
       { text: "安全", link: "https://nervjs.github.io/taro/" },
       { text: "面试", link: "https://uniapp.dcloud.io/" },
@@ -56,11 +53,11 @@ module.exports = {
         items: [
           {
             text: "网络协议",
-            link: "https://juejin.im/post/5c2e10a76fb9a049c0432697"
+            link: "https://juejin.im/post/5c93ba526fb9a070ca103898"
           },
           {
             text: "数据结构",
-            link: "/accumulate/"
+            link: "https://mp.weixin.qq.com/s/EFil0A_ylv_PCreVj-SebA"
           },
           {
             text: "设计模式",
