@@ -24,7 +24,6 @@ module.exports = {
       // { text: "Vue", link: "/20-VUE/" }, // 内部链接 以docs为根目录
       // { text: "React", link: "/30-React/" },
       { text: "大纲", link: "/docs/README" },
-      { text: "算法", link: "https://facebook.github.io/react-native/" },
       { text: "安全", link: "https://nervjs.github.io/taro/" },
       { text: "面试", link: "https://uniapp.dcloud.io/" },
       {
@@ -56,7 +55,7 @@ module.exports = {
             link: "https://juejin.im/post/5c93ba526fb9a070ca103898"
           },
           {
-            text: "数据结构",
+            text: "数据结构与算法",
             link: "https://mp.weixin.qq.com/s/EFil0A_ylv_PCreVj-SebA"
           },
           {
