@@ -1,3 +1,0 @@
----
-title: JavaScript类型
----
