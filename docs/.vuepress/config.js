@@ -2,7 +2,7 @@
  * @Author: mokinzhao
  * @Date: 2019-09-24 15:02:43
  * @Description:
- * @LastEditTime: 2019-09-29 18:52:19
+ * @LastEditTime: 2019-10-16 12:02:57
  */
 module.exports = {
   title: "全栈大前端",
@@ -24,8 +24,12 @@ module.exports = {
       // { text: "Vue", link: "/20-VUE/" }, // 内部链接 以docs为根目录
       // { text: "React", link: "/30-React/" },
       { text: "大纲", link: "/docs/README" },
-      { text: "安全", link: "https://nervjs.github.io/taro/" },
-      { text: "面试", link: "https://uniapp.dcloud.io/" },
+      { text: "安全", link: "https://juejin.im/post/5c137f37f265da6133567735" },
+      {
+        text: "面试",
+        link:
+          "https://github.com/biaochenxuying/blog/blob/master/interview/fe-interview.md"
+      },
       {
         text: "跨端综合",
         items: [
