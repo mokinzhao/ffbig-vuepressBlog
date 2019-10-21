@@ -2,7 +2,7 @@
  * @Author: mokinzhao
  * @Date: 2019-09-24 15:02:43
  * @Description:
- * @LastEditTime: 2019-10-16 12:02:57
+ * @LastEditTime: 2019-10-21 10:22:47
  */
 module.exports = {
   title: "全栈大前端",
@@ -23,12 +23,20 @@ module.exports = {
     nav: [
       // { text: "Vue", link: "/20-VUE/" }, // 内部链接 以docs为根目录
       // { text: "React", link: "/30-React/" },
-      { text: "大纲", link: "/docs/README" },
+      { text: "大纲", link: "/00-大纲" },
       { text: "安全", link: "https://juejin.im/post/5c137f37f265da6133567735" },
       {
         text: "面试",
-        link:
-          "https://github.com/biaochenxuying/blog/blob/master/interview/fe-interview.md"
+        items: [
+          {
+            text: "大厂面试题",
+            link: "/面试/大厂面试题"
+          },
+          {
+            text: "大厂内推",
+            link: "/面试/大厂内推"
+          }
+        ]
       },
       {
         text: "跨端综合",
