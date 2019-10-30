@@ -2,14 +2,27 @@
  * @Author: mokinzhao
  * @Date: 2019-09-24 15:02:43
  * @Description:
- * @LastEditTime: 2019-10-21 10:22:47
+ * @LastEditTime: 2019-10-30 10:48:52
  */
 module.exports = {
   title: "全栈大前端",
   description: "mokinzhao 的前端世界",
   // 注入到当前页面的 HTML <head> 中的标签
   head: [
-    ["link", { rel: "icon", href: "/favicon.ico" }] // 增加一个自定义的 favicon(网页标签的图标)
+    ["link", { rel: "icon", href: "/favicon.ico" }], // 增加一个自定义的 favicon(网页标签的图标)
+    [
+      "script",
+      {},
+      `
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?89be3d514ec18b88f3530b7ecf868937";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+`
+    ]
   ],
   base: "/", // 这是部署到github相关的配置 下面会讲
   markdown: {
