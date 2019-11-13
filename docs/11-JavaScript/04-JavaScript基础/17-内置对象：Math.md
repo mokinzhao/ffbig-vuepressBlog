@@ -91,8 +91,8 @@ console.log(decodeURIComponent(str)); //对url进行编码后，再解码，还�
 
 ## 我的公众号
 
-想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+想学习**更多的技能**？不妨关注我的微信公众号：**千古壹号**（id：`mokinzhao`）。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-![](http://img.smyhvae.com/20190101.png)
+![](http://api.ffbig.cn/wchatp.jpeg)

@@ -13,7 +13,7 @@ title: 内置对象 String
 注意，基本数据类型`string`是**无法绑定属性和方法**的。比如说：
 
 ```javascript
-var str = "qianguyihao";
+var str = "mokinzhao";
 
 str.aaa = 12;
 console.log(typeof str); //打印结果为：string
@@ -202,7 +202,7 @@ console.log(str.lastIndexOf("a"));
 **代码举例 2**：（两个参数时，需要特别注意）
 
 ```javascript
-var str = "qianguyihao";
+var str = "mokinzhao";
 result = str.indexOf("a", 3); // 从第三个位置开始查找 'a'这个字符 【重要】
 
 console.log(result); // 打印结果：9
@@ -231,7 +231,7 @@ var str1 = "qiangu";
 var str2 = "yihao";
 
 var result = str1.concat(str2);
-console.log(result); // 打印结果：qianguyihao
+console.log(result); // 打印结果：mokinzhao
 ```
 
 ### slice()
@@ -480,8 +480,8 @@ for (var i = 0; i < str2.length; i++) {
 
 ## 我的公众号
 
-想学习**代码之外的技能**？不妨关注我的微信公众号：**千古壹号**（id：`qianguyihao`）。
+想学习**更多的技能**？不妨关注我的微信公众号：**千古壹号**（id：`mokinzhao`）。
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-![](http://img.smyhvae.com/20190101.png)
+![](http://api.ffbig.cn/wchatp.jpeg)
