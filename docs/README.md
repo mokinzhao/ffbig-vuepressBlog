@@ -4,7 +4,7 @@ heroImage: /bg.jpg
 heroText: 全栈大前端
 tagline: 系统积累，学练结合
 actionText: 开始旅程 →
-actionLink: /11-JavaScript/04-JavaScript基础/01-JS简介.html
+actionLink: /00-大纲.html
 features:
   - title: 精简梳理
     details: 主题突出，知识点鲜明，极简概括出整个大前端知识点脉络.

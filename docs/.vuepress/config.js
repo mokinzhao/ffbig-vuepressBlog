@@ -2,7 +2,7 @@
  * @Author: mokinzhao
  * @Date: 2019-09-24 15:02:43
  * @Description:
- * @LastEditTime: 2019-10-30 10:48:52
+ * @LastEditTime: 2019-11-14 17:13:00
  */
 module.exports = {
   title: "全栈大前端",
@@ -36,8 +36,7 @@ module.exports = {
     nav: [
       // { text: "Vue", link: "/20-VUE/" }, // 内部链接 以docs为根目录
       // { text: "React", link: "/30-React/" },
-      { text: "大纲", link: "/00-大纲" },
-      { text: "安全", link: "https://juejin.im/post/5c137f37f265da6133567735" },
+      // { text: "安全", link: "https://juejin.im/post/5c137f37f265da6133567735" },
       {
         text: "面试",
         items: [
