@@ -49,7 +49,7 @@ module.exports = {
             link: "/面试/大厂内推"
           },
           {
-            text: "面试资料(2019.10)",
+            text: "面试资料",
             link: "/面试/面试资料"
           }
         ]
@@ -72,6 +72,10 @@ module.exports = {
           {
             text: "Uni-app",
             link: "https://uniapp.dcloud.io/"
+          },
+          {
+            text: "PWA",
+            link: "https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps"
           }
         ]
       },
