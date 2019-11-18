@@ -2,7 +2,7 @@
  * @Author: mokinzhao
  * @Date: 2019-09-24 15:02:43
  * @Description:
- * @LastEditTime: 2019-11-14 17:13:00
+ * @LastEditTime: 2019-11-18 16:16:48
  */
 module.exports = {
   title: "全栈大前端",
@@ -54,8 +54,66 @@ module.exports = {
           }
         ]
       },
+
       {
-        text: "跨端综合",
+        text: "数据结构与算法",
+        items: [
+          {
+            text: "一文概览数据结构与算法",
+            link: "https://mp.weixin.qq.com/s/EFil0A_ylv_PCreVj-SebA"
+          },
+          {
+            text: "数据结构与算法系列",
+            link: "http://www.conardli.top/docs/dataStructure/"
+          },
+          {
+            text: "十大经典排序",
+            link: "https://segmentfault.com/a/1190000019916376"
+          }
+        ]
+      },
+
+      {
+        text: "网络与浏览器缓存",
+        items: [
+          {
+            text: "HTTP协议基础概述",
+            link: "/网络/Http"
+          },
+          {
+            text: "TCP协议与OSI 七层模型",
+            link: "/网络/Tcp"
+          },
+          {
+            text: "解读HTTP/2与HTTP/3 的新特性",
+            link: "https://mp.weixin.qq.com/s/zhYWDhsqrBO5MB4Hw2XkDA"
+          },
+          {
+            text: "从URL输入到页面展现到底发生什么",
+            link: "https://mp.weixin.qq.com/s/mzckXvsqW99xe_t-uUYy4w"
+          }
+        ]
+      },
+
+      {
+        text: "架构思想与设计模式",
+        items: [
+          {
+            text: "面向对象之七大基本原则（javaScript）",
+            link: "https://segmentfault.com/a/1190000020319171"
+          },
+          {
+            text: "领域驱动设计在前端中的应用",
+            link: "https://mp.weixin.qq.com/s/1kl8SV28GDt_40FF_6CuhA"
+          },
+          {
+            text: "设计模式",
+            link: "https://juejin.im/post/5c2e10a76fb9a049c0432697"
+          }
+        ]
+      },
+      {
+        text: "跨端融合",
         items: [
           {
             text: "ReactNative",
@@ -75,28 +133,12 @@ module.exports = {
           },
           {
             text: "PWA",
-            link: "https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps"
+            link:
+              "https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps"
           }
         ]
       },
-      {
-        text: "基础综合",
-        items: [
-          {
-            text: "网络协议",
-            link: "https://juejin.im/post/5c93ba526fb9a070ca103898"
-          },
-          {
-            text: "数据结构与算法",
-            link: "http://www.conardli.top/docs/dataStructure/"
-          },
-          {
-            text: "设计模式",
-            link: "https://juejin.im/post/5c2e10a76fb9a049c0432697"
-          }
-        ]
-      },
-      { text: "博客", link: "https://blog.csdn.net/z4909801" }, // 外部链接
+      { text: "博客", link: "https://blog.csdn.net/z4909801" } // 外部链接
       // 下拉列表
       // {
       //   text: "他山之石",
