@@ -1,3 +1,3 @@
 ---
-title: SSR解析
+title: ssr解析
 ---
