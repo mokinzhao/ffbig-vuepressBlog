@@ -1,5 +1,5 @@
 ---
-title: vuex解析
+title: vuex解析（夜尽天明）
 ---
 
 ## Vuex
