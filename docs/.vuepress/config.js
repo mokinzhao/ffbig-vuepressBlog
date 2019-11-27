@@ -2,7 +2,7 @@
  * @Author: mokinzhao
  * @Date: 2019-09-24 15:02:43
  * @Description:
- * @LastEditTime: 2019-11-18 16:16:48
+ * @LastEditTime: 2019-11-27 10:00:18
  */
 module.exports = {
   title: "全栈大前端",
@@ -54,7 +54,28 @@ module.exports = {
           }
         ]
       },
+      {
+        text: "架构分析与设计",
+        items: [
+          {
+            text: "框架设计：PC 端单页多页框架如何设计与落地 ",
+            link: "https://mp.weixin.qq.com/s/m519w-RtdslHHrcbi_VLBA"
+          },
+          {
+            text: "框架设计：RN 端的框架如何设计与落地",
+            link: "https://mp.weixin.qq.com/s/Vtczty5i8awo3p7qspjhmg"
+          },
+          {
+            text: "透彻分析：常见的前端架构风格和案例",
+            link: "https://mp.weixin.qq.com/s/x4KcDPrV2aqtjkRdow_JVg"
+          },
 
+          {
+            text: "领域驱动设计在前端中的应用",
+            link: "https://mp.weixin.qq.com/s/1kl8SV28GDt_40FF_6CuhA"
+          }
+        ]
+      },
       {
         text: "数据结构与算法",
         items: [
@@ -96,15 +117,15 @@ module.exports = {
       },
 
       {
-        text: "架构思想与设计模式",
+        text: "面向对象与设计模式",
         items: [
+          {
+            text: "面向对象之三个基本特征（javaScript）",
+            link: "https://segmentfault.com/a/1190000018239556"
+          },
           {
             text: "面向对象之七大基本原则（javaScript）",
             link: "https://segmentfault.com/a/1190000020319171"
-          },
-          {
-            text: "领域驱动设计在前端中的应用",
-            link: "https://mp.weixin.qq.com/s/1kl8SV28GDt_40FF_6CuhA"
           },
           {
             text: "设计模式",

@@ -44,11 +44,11 @@ title: Egg.js-源码分析（项目启动）
     <span class="copy-code-btn">复制代码</span>`</pre>
 ```
 
-    哈哈，我们上面说了很多的废话(文字表达能力问题)， 其实我是想分析下，怎么基于Koa 框架去应用， [eggjs](https://github.com/eggjs/egg)就是基于Koa 框架基础上实现的一个框架， 我们下面来具体分析下**eggjs** 框架。
+哈哈，我们上面说了很多的废话(文字表达能力问题)， 其实我是想分析下，怎么基于 Koa 框架去应用， [eggjs](https://github.com/eggjs/egg)就是基于 Koa 框架基础上实现的一个框架， 我们下面来具体分析下**eggjs** 框架。
 
-    ## Eggjs 基本使用
+## Eggjs 基本使用
 
-    我们根据[快速入门](https://eggjs.org/zh-cn/intro/quickstart.html), 可以很快搭建一个Egg 项目框架，
+我们根据[快速入门](https://eggjs.org/zh-cn/intro/quickstart.html), 可以很快搭建一个 Egg 项目框架，
 
 ```js
 <pre>
@@ -58,17 +58,17 @@ title: Egg.js-源码分析（项目启动）
 </pre>
 ```
 
-    我们可以用`npm run dev` 快速启动项目.然后打开`localhost:7001`,就可以看到页面输出：
+我们可以用`npm run dev` 快速启动项目.然后打开`localhost:7001`,就可以看到页面输出：
 
-    hi, egg.
+hi, egg.
 
-    说明我们项目初始化已经完成，而且已经启动成功。我们现在可以学习下egg项目生成的相关代码。其代码文件结构如下:
+说明我们项目初始化已经完成，而且已经启动成功。我们现在可以学习下 egg 项目生成的相关代码。其代码文件结构如下:
 
-    ![](https://user-gold-cdn.xitu.io/2018/11/12/167071dfb2cd29f5?imageView2/0/w/1280/h/960/ignore-error/1)
+![](https://user-gold-cdn.xitu.io/2018/11/12/167071dfb2cd29f5?imageView2/0/w/1280/h/960/ignore-error/1)
 
-    分析整个文件结构，找了整个项目都没有发现app.js之类的入口文件(我一般学习一个新的框架，都会从入口文件着手), 发现**app** 文件夹下面的应该对项目很重要的代码：
+分析整个文件结构，找了整个项目都没有发现 app.js 之类的入口文件(我一般学习一个新的框架，都会从入口文件着手), 发现**app** 文件夹下面的应该对项目很重要的代码：
 
-    > 1, controller文件夹，我们从字面理解，应该是控制层的文件，其中有一个home.js 代码如下:
+> 1, controller 文件夹，我们从字面理解，应该是控制层的文件，其中有一个 home.js 代码如下:
 
 ```js
     <span class="hljs-string">'use strict'</span>;
@@ -87,9 +87,9 @@ title: Egg.js-源码分析（项目启动）
 
 ```
 
-    这个类继承了egg 的Controller 类, 暂时还没有发现这个项目哪个地方有引用这个**Controller** 类?
+这个类继承了 egg 的 Controller 类, 暂时还没有发现这个项目哪个地方有引用这个**Controller** 类?
 
-    > 2, 一个**router.js** 文件， 从字面意义上我们可以理解其为一个路由的文件，其代码如下:
+> 2, 一个**router.js** 文件， 从字面意义上我们可以理解其为一个路由的文件，其代码如下:
 
 ```js
     <pre>`<span class="hljs-string">'use strict'</span>;
@@ -106,10 +106,10 @@ title: Egg.js-源码分析（项目启动）
 
 ```
 
-    这个文件暴露了一个方法， 从目前来猜测应该就是路由的一些配置， 但是找遍整个项目也没有发现，哪个地方引用了这个方法，
-    `router.get('/', controller.home.index);`, 但是从这个get 方法的第二个参数， 其似乎指向的是Controller 里面的home.js 文件index 方法，我们可以尝试修改下home.js 中的`this.ctx.body = 'hi, egg -&gt; hello world!';`, 然后重新运行`npm run dev`, 发现页面输出是`hi, egg -&gt; hello world!`, 看来`controller.home.index`这个指向的是home.js 里的index 方法无疑了， 但是`controller.home.index`这个index 方法绑定的是在一个`controller`对象上，什么时候绑定的呢?
+这个文件暴露了一个方法， 从目前来猜测应该就是路由的一些配置， 但是找遍整个项目也没有发现，哪个地方引用了这个方法，
+`router.get('/', controller.home.index);`, 但是从这个 get 方法的第二个参数， 其似乎指向的是 Controller 里面的 home.js 文件 index 方法，我们可以尝试修改下 home.js 中的`this.ctx.body = 'hi, egg -&gt; hello world!';`, 然后重新运行`npm run dev`, 发现页面输出是`hi, egg -&gt; hello world!`, 看来`controller.home.index`这个指向的是 home.js 里的 index 方法无疑了， 但是`controller.home.index`这个 index 方法绑定的是在一个`controller`对象上，什么时候绑定的呢?
 
-    我们接下来带着如下疑问来学些**eggjs** :
+我们接下来带着如下疑问来学些**eggjs** :
 
 ```js
     > *   <font color="red">没有类似的app.js 入口文件，运行`npm run dev` 如何启动一个项目(启动server, 监听端口， 添加中间件)?</font>
@@ -119,35 +119,31 @@ title: Egg.js-源码分析（项目启动）
 
 ## eggjs 启动
 
-    我们先查看一开始用`egg-init`命令创建的项目的package.json 文件,查看`scripts`，里面有一系列的命令，如下图:
+我们先查看一开始用`egg-init`命令创建的项目的 package.json 文件,查看`scripts`，里面有一系列的命令，如下图:
 
-    <figure>![](https://user-gold-cdn.xitu.io/2018/11/15/167165ee63bce475?imageView2/0/w/1280/h/960/ignore-error/1)
-
-    我们可以通过`npm run start`来启动程序， 但是其中有一个命令`debug`, 我们可以可以通过`npm run debug`命令来调试eggjs 程序， 其对用的命令是`egg-bin debug`, 所以我们整个入口就是这个命令，我们下面来具体分析下`egg-bin debug`是如何工作的.
+<figure>![](https://user-gold-cdn.xitu.io/2018/11/15/167165ee63bce475?imageView2/0/w/1280/h/960/ignore-error/1)
+我们可以通过`npm run start`来启动程序， 但是其中有一个命令`debug`, 我们可以可以通过`npm run debug`命令来调试eggjs 程序， 其对用的命令是`egg-bin debug`, 所以我们整个入口就是这个命令，我们下面来具体分析下`egg-bin debug`是如何工作的.
 
 ## egg-bin
 
-    egg-bin 中的`start-cluster`文件， 调用了eggjs 的入口方法：`require(options.framework).startCluster(options);`
-    其中options.framework指向的就是一个绝对路径`D:\private\your_project_name\node_modules\egg`(也就是**egg** 模块), 直接执行`D:\private\your_project_name\node_modules\egg\index.js`暴露出来的`exports.startCluster = require('egg-cluster').startCluster;` 的`startCluster`方法。 下面我们就来分析**egg-cluster** 模块。
+egg-bin 中的`start-cluster`文件， 调用了 eggjs 的入口方法：`require(options.framework).startCluster(options);`
+其中 options.framework 指向的就是一个绝对路径`D:\private\your_project_name\node_modules\egg`(也就是**egg** 模块), 直接执行`D:\private\your_project_name\node_modules\egg\index.js`暴露出来的`exports.startCluster = require('egg-cluster').startCluster;` 的`startCluster`方法。 下面我们就来分析**egg-cluster** 模块。
 
 ## egg-cluster
 
-    egg-cluster 的项目结构如下， 其中有两个主要的文件： `master.js`, `app_worker.js`两个文件，
+egg-cluster 的项目结构如下， 其中有两个主要的文件： `master.js`, `app_worker.js`两个文件，
 
-    ![](https://user-gold-cdn.xitu.io/2018/11/16/1671aa8306a9216a?imageView2/0/w/1280/h/960/ignore-error/1)
-    `master.js`是跟nodejs的多线程有关，我们先跳过这一块，直接研究`app_worker.js`文件，学习eggjs 的启动过程。下面我们就是app_worker.js 执行的主要步骤。
+![](https://user-gold-cdn.xitu.io/2018/11/16/1671aa8306a9216a?imageView2/0/w/1280/h/960/ignore-error/1)
+`master.js`是跟 nodejs 的多线程有关，我们先跳过这一块，直接研究`app_worker.js`文件，学习 eggjs 的启动过程。下面我们就是 app_worker.js 执行的主要步骤。
 
-`
+- 1.  `const Application = require(options.framework).Application;` , 引入 eggjs 模块， optons.framework 指向的就是`D:\private\your_project_name\node_modules\egg`
+- 2.  `const app = new Application(options);`(创建一个 egg 实例)
+- 3.  `app.ready(startServer);`调用 egg 对象的** ready ** 方法，其 startServer 是一个回调函数，其功能是调用 nodejs 原生模块`http` or `https` 的 `createServer` 创建一个 nodejs 服务(`server = require('http').createServer(app.callback());`, 我们后续会深入分析这个方法)。
+      上面三个步骤， 已经启动了一个 nodejs 服务， 监听了端口。也就是已经解决了我们的第一个疑问:
 
-1.  `const Application = require(options.framework).Application;` , 引入 eggjs 模块， optons.framework 指向的就是`D:\private\your_project_name\node_modules\egg`
-2.  `const app = new Application(options);`(创建一个 egg 实例)
-3.  `app.ready(startServer);`调用 egg 对象的** ready ** 方法，其 startServer 是一个回调函数，其功能是调用 nodejs 原生模块`http` or `https` 的 `createServer` 创建一个 nodejs 服务(`server = require('http').createServer(app.callback());`, 我们后续会深入分析这个方法)。
+          > <font color="red"> 没有类似的 app.js 入口文件，运行 npm run dev 如何启动一个项目(启动 server, 监听端口， 添加中间件)?</font>
 
-    上面三个步骤， 已经启动了一个 nodejs 服务， 监听了端口。也就是已经解决了我们的第一个疑问:
-
-    > <font color="red"> 没有类似的 app.js 入口文件，运行 npm run dev 如何启动一个项目(启动 server, 监听端口， 添加中间件)?</font>
-
-    上面其实我们还是只是分析了 eggjs 启动的基本流程， 还没有涉及 eggjs 的核心功能库，也就是** egg ** 和** egg-core** 两个库，但是我们上面已经初实例化了一个 eggjs 的对象`const app = new Application(options);`, 下面我们就从这个入口文件来分析 eggjs 的核心模块。
+          上面其实我们还是只是分析了 eggjs 启动的基本流程， 还没有涉及 eggjs 的核心功能库，也就是** egg ** 和** egg-core** 两个库，但是我们上面已经初实例化了一个 eggjs 的对象`const app = new Application(options);`, 下面我们就从这个入口文件来分析 eggjs 的核心模块。
 
 
     ## egg &amp; egg-core
@@ -163,20 +159,19 @@ title: Egg.js-源码分析（项目启动）
 
     ### EggCore(egg-core/lib/egg.js)
 
-    我们将构造函数进行精简，代码如下
+我们将构造函数进行精简，代码如下
+![](https://user-gold-cdn.xitu.io/2018/11/16/1671b43d9083e9d2?imageView2/0/w/1280/h/960/ignore-error/1)从上图可知，构造函数就是初始化了很多基础的属性，其中有两个属性很重要：
 
-    ![](https://user-gold-cdn.xitu.io/2018/11/16/1671b43d9083e9d2?imageView2/0/w/1280/h/960/ignore-error/1)
-    从上图可知，构造函数就是初始化了很多基础的属性，其中有两个属性很重要：
-    > 1.  `this.lifecycle`负责整个eggjs 实例的生命周期，我们后续会深入分析整个生命周期
-    > 1.  `this.loader`(egg-core/lib/loader/egg_loader.js)解决了eggjs 为什么在服务启动后，会自动加载，将项目路径下的`router.js`, `controller/**.js`, 以及`service/**.js`绑定到 `app` 实例上， 我们接下来会重点分析这个loader.
+> 1.  `this.lifecycle`负责整个 eggjs 实例的生命周期，我们后续会深入分析整个生命周期
+> 1.  `this.loader`(egg-core/lib/loader/egg_loader.js)解决了 eggjs 为什么在服务启动后，会自动加载，将项目路径下的`router.js`, `controller/**.js`, 以及`service/**.js`绑定到 `app` 实例上， 我们接下来会重点分析这个 loader.
 
 ### EggApplication(egg/lib/egg.js)
 
-    我们将构造函数进行精简，代码如下
+我们将构造函数进行精简，代码如下
 
-    ![](https://user-gold-cdn.xitu.io/2018/11/16/1671b4fde0678d85?imageView2/0/w/1280/h/960/ignore-error/1)
+![](https://user-gold-cdn.xitu.io/2018/11/16/1671b4fde0678d85?imageView2/0/w/1280/h/960/ignore-error/1)
 
-    这个构造函数同样也是初始化了很多基础的属性， 但是其中有调用**EggCore** 构造函数初始化的**loader** 的`loadConfig()` 方法, 这个方法顾名思义就是去加载配置，其指向的是: `egg/lib/loader/app_worker_loader .js` 的方法`loadConfig` , 这个方法，如下:
+这个构造函数同样也是初始化了很多基础的属性， 但是其中有调用**EggCore** 构造函数初始化的**loader** 的`loadConfig()` 方法, 这个方法顾名思义就是去加载配置，其指向的是: `egg/lib/loader/app_worker_loader .js` 的方法`loadConfig` , 这个方法，如下:
 
 ```js
 
@@ -318,24 +313,21 @@ const app = new Application(options);
     <span class="copy-code-btn">复制代码</span>
 ```
 
-    如上，我们再次启动项目的时候，打开的端口就是： 7788 了。
+如上，我们再次启动项目的时候，打开的端口就是： 7788 了。
 
-    **<font color="red"> 思考:</font>**
+## 思考:
 
-    我们已经知道可以在 config 中进行相应的配置了， 我们还有什么其他的应用在 config 上面呢？
+我们已经知道可以在 config 中进行相应的配置了， 我们还有什么其他的应用在 config 上面呢？
+我们知道在不同的运行环境下，会加载不同的配置，那如果我们在开发的时候，调用 api 的路径是： `http://dev.api.com`, 但是在上线的时候，我们调用的 app 的路径是： `http://prod.api.com`, 我们就可以在
+`config.prod.js`中配置 `apiURL:http://prod.api.com`， 在`config.local.js`配置： `apiURL:http://prod.api.com`
+然后我们在我们调用 API 的地方通过 `app.apiURL`就可以。
 
-    我们知道在不同的运行环境下，会加载不同的配置，那如果我们在开发的时候，调用 api 的路径是： `http://dev.api.com`, 但是在上线的时候，我们调用的 app 的路径是： `http://prod.api.com`, 我们就可以在
-    `config.prod.js`中配置 `apiURL:http://prod.api.com`， 在`config.local.js`配置： `apiURL:http://prod.api.com`
-
-    然后我们在我们调用 API 的地方通过 `app.apiURL`就可以。
-
-    ### Application(egg/lib/application.js)
+### Application(egg/lib/application.js)
 
     Application(egg/lib/applicaton.js) <font color="red" size="5">-----&gt;</font> EggApplication(egg/lib/egg.js) <font color="red" size="5">-----&gt;</font> EggCore(egg-core/lib/egg.js) <font color="red" size="5">-----&gt;</font> <font size="5"> KoaApplication(<font color="red">koa</font>)</font>
 
-    我们已经将上述的两个核心的类： EggApplication(egg/lib/egg.js) <font color="red" size="5">-----&gt;</font> EggCore(egg-core/lib/egg.js)， 我们现在来分析最上层的类： Application(egg/lib/applicaton.js)。
-
-    我们还是从构造函数入手，我们发现了一行很重要的代码`this.loader.load();`其指向的是： **app_worker_loader.js**(egg/lib/loader/app_worker_loader.js)的 load 方法， 其实现如下：
+我们已经将上述的两个核心的类： EggApplication(egg/lib/egg.js) <font color="red" size="5">-----&gt;</font> EggCore(egg-core/lib/egg.js)， 我们现在来分析最上层的类： Application(egg/lib/applicaton.js)。
+我们还是从构造函数入手，我们发现了一行很重要的代码`this.loader.load();`其指向的是： **app_worker_loader.js**(egg/lib/loader/app_worker_loader.js)的 load 方法， 其实现如下：
 
 ```js
     <span class="hljs-function"><span class="hljs-title">load</span></span>() {
@@ -364,9 +356,9 @@ const app = new Application(options);
 
 #### `this.loadApplicationExtend();`
 
-    这个方法会去给应用加载很多的扩展方法， 其加载的路径是： app\extend\application.js, 会将对应的对象挂载在 app 应用上。 (使用方法可以参考 egg-jsonp/app/extend/applicaton.js 或者 egg-session/app/extend/application.js)
+这个方法会去给应用加载很多的扩展方法， 其加载的路径是： app\extend\application.js, 会将对应的对象挂载在 app 应用上。 (使用方法可以参考 egg-jsonp/app/extend/applicaton.js 或者 egg-session/app/extend/application.js)
 
-    #### `this.loadResponseExtend();` `this.loadResponseExtend();` `this.loadContextExtend();` `this.loadHelperExtend();`,
+#### `this.loadResponseExtend();` `this.loadResponseExtend();` `this.loadContextExtend();` `this.loadHelperExtend();`,
 
     跟`this.loadApplicationExtend();`加载的方式是一样的，只是对应的名称分别是： request.js， response.js， helper.js， context.js
 
@@ -404,7 +396,7 @@ const app = new Application(options);
 
 ```
 
-    从上可知** bootHook** 对应的就是加载的文件，从上面的`if` `else`可知， app.js 必须暴露出来的是一个**class** 或者是一个**function** ,然后调用`this.lifecycle.addFunctionAsBootHook(bootHook);`, 其代码如下：
+从上可知** bootHook** 对应的就是加载的文件，从上面的`if` `else`可知， app.js 必须暴露出来的是一个**class** 或者是一个**function** ,然后调用`this.lifecycle.addFunctionAsBootHook(bootHook);`, 其代码如下：
 
 ```js
 
@@ -439,7 +431,7 @@ const app = new Application(options);
 
 ```
 
-    这个**init** 方法做了三件事情：
+这个**init** 方法做了三件事情：
 
 - 将 lifecycle 的 INIT 状态标记为： true
 - 将 BOOT_HOOKS 对应的类， 实例化一个对象，保存在**BOOTS** 上
