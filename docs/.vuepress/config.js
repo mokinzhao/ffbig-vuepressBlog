@@ -2,14 +2,17 @@
  * @Author: mokinzhao
  * @Date: 2019-09-24 15:02:43
  * @Description:
- * @LastEditTime: 2019-11-27 10:00:18
+ * @LastEditTime: 2019-11-27 10:23:04
  */
 module.exports = {
   title: "全栈大前端",
   description: "mokinzhao 的前端世界",
+  serviceWorker: true,
   // 注入到当前页面的 HTML <head> 中的标签
   head: [
     ["link", { rel: "icon", href: "/favicon.ico" }], // 增加一个自定义的 favicon(网页标签的图标)
+    //增加manifest.json
+    ["link", { rel: "manifest", href: "/manifest.json" }],
     [
       "script",
       {},
