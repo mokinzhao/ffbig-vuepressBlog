@@ -2,7 +2,7 @@
  * @Author: mokinzhao
  * @Date: 2019-09-24 15:02:43
  * @Description:
- * @LastEditTime: 2019-11-27 10:23:04
+ * @LastEditTime : 2019-12-20 11:00:28
  */
 module.exports = {
   title: "全栈大前端",
@@ -40,23 +40,23 @@ module.exports = {
       // { text: "Vue", link: "/20-VUE/" }, // 内部链接 以docs为根目录
       // { text: "React", link: "/30-React/" },
       // { text: "安全", link: "https://juejin.im/post/5c137f37f265da6133567735" },
-      {
-        text: "面试",
-        items: [
-          {
-            text: "大厂面试题",
-            link: "/面试/大厂面试题"
-          },
-          {
-            text: "大厂内推",
-            link: "/面试/大厂内推"
-          },
-          {
-            text: "面试资料",
-            link: "/面试/面试资料"
-          }
-        ]
-      },
+      // {
+      //   text: "面试",
+      //   items: [
+      //     {
+      //       text: "大厂面试题",
+      //       link: "/面试/大厂面试题"
+      //     },
+      //     {
+      //       text: "大厂内推",
+      //       link: "/面试/大厂内推"
+      //     },
+      //     {
+      //       text: "面试资料",
+      //       link: "/面试/面试资料"
+      //     }
+      //   ]
+      // },
       {
         text: "架构分析与设计",
         items: [
