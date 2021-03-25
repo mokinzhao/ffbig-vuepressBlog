@@ -49,7 +49,7 @@ Function.prototype.call = function (context, ...args) {
 - Apply
 
 ```js
-sadsda;
+11111;
 ```
 
 - Bind
