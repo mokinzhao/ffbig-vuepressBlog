@@ -1,8 +1,8 @@
 ---
-title: 浏览器与新技术
+title: Browser核心技术
 ---
 
-# 浏览器与新技术
+# 浏览器核心技术
 
 - [常见的浏览器内核有哪些?](#常见的浏览器内核有哪些?)
 - [浏览器的主要组成部分是什么？](#浏览器的主要组成部分是什么？)
@@ -277,7 +277,7 @@ function JSONP({ url, params, callbackKey, callback }) {
   window.jsonpCallback = callback;
   // 拼接参数字符串
   const paramKeys = Object.keys(params);
-  const paramString = paramKeys.map(key => `${key}=${params[key]}`).join("&");
+  const paramString = paramKeys.map((key) => `${key}=${params[key]}`).join("&");
   // 插入 DOM 元素
   const script = document.createElement("script");
   script.setAttribute("src", `${url}?${paramString}`);
@@ -287,12 +287,12 @@ function JSONP({ url, params, callbackKey, callback }) {
 JSONP({
   url: "http://s.weibo.com/ajax/jsonp/suggestion",
   params: {
-    key: "test"
+    key: "test",
   },
   callbackKey: "_cb",
   callback(result) {
     console.log(result.data);
-  }
+  },
 });
 ```
 
@@ -304,7 +304,7 @@ cors 是目前主流的跨域解决方案，跨域资源共享(CORS) 是一种�
 
 ```js
 //CORS middleware
-var allowCrossDomain = function(req, res, next) {
+var allowCrossDomain = function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://example.com");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
@@ -313,7 +313,7 @@ var allowCrossDomain = function(req, res, next) {
 };
 
 //...
-app.configure(function() {
+app.configure(function () {
   app.use(express.bodyParser());
   app.use(express.cookieParser());
   app.use(express.session({ secret: "cool beans" }));
