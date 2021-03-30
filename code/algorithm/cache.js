@@ -1,42 +1,10 @@
----
-title: 算法-高频
----
+/*
+ * @Author: mokinzhao
+ * @Date: 2021-03-30 20:40:11
+ * @Description:缓存算法
+ */
 
-- 两数之合
-
-```js
-//求差-对象方式
-function twoSum(nums, target) {
-  let temp = {};
-  for (let i = 0; i < nums.length; i++) {
-    const diff = temp[target - nums[i]];
-    if (diff !== undefined) {
-      return [diff, i];
-    }
-    temp[nums[i]] = i;
-  }
-}
-```
-
-```js
-//求差-map方式
-const twoSum = function (nums, target) {
-  const map = new Map();
-  const len = nums.length;
-  for (let i = 0; i < len; i++) {
-    const diff = target - nums[i];
-    if (map.has(diff)) {
-      return [map.get(diff), i];
-    }
-    map.set(nums[i], i);
-  }
-};
-```
-
-- LRU
-
-```js
-//最近最少使用原则，使用就更新，不使用往队列后面排
+//LRU最近最少使用原则，使用就更新，不使用往队列后面排
 class LRU {
   constructor(max) {
     this.cache = new Map();
@@ -76,4 +44,3 @@ cache.put(4, 4); // 该操作会使得密钥 1 作废
 console.log(cache.get(1)); // 返回 -1 (未找到)
 console.log(cache.get(3)); // 返回  3
 console.log(cache.get(4)); // 返回  4
-```
