@@ -1,5 +1,5 @@
 ---
-title: JavaScript 内存管理
+title: JavaScript内存管理及垃圾回收机制
 ---
 
 # JavaScript 内存管理
@@ -28,7 +28,7 @@ title: JavaScript 内存管理
 function add() {
   const a = 1;
   const b = {
-    num: 2
+    num: 2,
   };
 
   const sum = a + b.num;
@@ -148,18 +148,18 @@ Mark-Sweep，是标记清除的意思。它主要分为标记和清除两个阶�
 ```js
 // 滥用闭包引起内存泄漏
 var theThing = null;
-var replaceThing = function() {
+var replaceThing = function () {
   var originalThing = theThing;
-  var unused = function() {
+  var unused = function () {
     if (originalThing)
       // 对于 'originalThing'的引用
       console.log("hi");
   };
   theThing = {
     longStr: new Array(1000000).join("*"),
-    someMethod: function() {
+    someMethod: function () {
       console.log("message");
-    }
+    },
   };
 };
 setInterval(replaceThing, 1000);

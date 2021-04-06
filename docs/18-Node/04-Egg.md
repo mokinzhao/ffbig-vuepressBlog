@@ -1,6 +1,13 @@
 ---
-title: Egg.js-源码分析（项目启动）
+title: Egg
 ---
+
+## Egg-基础全面讲解系列
+
+- 一文看懂 Eggjs-基础全面讲解（上） <https://juejin.im/post/5d357f0e51882563914b49bb>
+- 一文看懂 Eggjs-基础全面讲解（中） <https://juejin.im/post/5d36679ce51d45554877a6ab>
+- 一文看懂 Eggjs-基础全面讲解（下） <https://juejin.im/post/5d37ba17f265da1bc94f2f97>
+- 一文看懂 Eggjs-基础全面讲解（完结） <https://juejin.im/post/5d38160c51882551c37fbcd2>
 
 ## 前言
 
@@ -145,11 +152,9 @@ egg-cluster 的项目结构如下， 其中有两个主要的文件： `master.j
 
           上面其实我们还是只是分析了 eggjs 启动的基本流程， 还没有涉及 eggjs 的核心功能库，也就是** egg ** 和** egg-core** 两个库，但是我们上面已经初实例化了一个 eggjs 的对象`const app = new Application(options);`, 下面我们就从这个入口文件来分析 eggjs 的核心模块。
 
+  ## egg &amp; egg-core
 
-    ## egg &amp; egg-core
-
-
-    egg 和 egg-core 模块下面有几个核心的类，如下:
+  egg 和 egg-core 模块下面有几个核心的类，如下:
 
 ```js
     Application(egg/lib/applicaton.js) <font color="red" size="5">-----&gt;</font> EggApplication(egg/lib/egg.js) <font color="red" size="5">-----&gt;</font> EggCore(egg-core/lib/egg.js) <font color="red" size="5">-----&gt;</font> <font size="5"> KoaApplication(<font color="red">koa</font>)</font>
@@ -248,8 +253,8 @@ config.cluster = {
   listen: {
     path: <span class="hljs-string">''</span>,
     port: 7001,
-    hostname: <span class="hljs-string">''</span>
-  }
+    hostname: <span class="hljs-string">''</span>,
+  },
 };
 <span class="copy-code-btn">复制代码</span>;
 ```
