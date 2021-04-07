@@ -1,5 +1,5 @@
 ---
-title: React组件复用指南
+title: React组件复用
 ---
 
 ## React 组件复用指南
@@ -149,8 +149,7 @@ class Example extends React.Component {
 
 这个 input 会自动成为[受控 input](https://reactjs.org/docs/forms.html)。
 
-> **更多关于常规的双向绑定 HOC 请点击  [链接](https://github.com/franleplant/react-hoc-examples/blob/master/pp_state.js)**
-> **用其他元素包裹 WrappedComponent**
+> **更多关于常规的双向绑定 HOC 请点击  [链接](https://github.com/franleplant/react-hoc-examples/blob/master/pp_state.js)** > **用其他元素包裹 WrappedComponent**
 
 为了封装样式、布局或别的目的，你可以用其它组件和元素包裹  *WrappedComponent*。基本方法是使用父组件（附录 B）实现，但通过 HOC 你可以得到更多灵活性。
 
@@ -215,7 +214,7 @@ React 元素有两种类型：字符串和函数。字符串类型的 React 元�
 
 通过渲染劫持你可以：
 
-- 在由  *render***输出**的任何 React 元素中读取、添加、编辑、删除 props
+- 在由  \*render**\*输出**的任何 React 元素中读取、添加、编辑、删除 props
 - 读取和修改由  *render*  输出的 React 元素树
 - 有条件地渲染元素树
 - 把样式包裹进元素树（就像在 Props Proxy 中的那样）
