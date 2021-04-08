@@ -24,3 +24,7 @@ var a = Singleton.getInstance("seven1");
 var b = Singleton.getInstance("seven2");
 
 console.log(a === b); //true
+
+//发布订阅
+
+//观察者模式
