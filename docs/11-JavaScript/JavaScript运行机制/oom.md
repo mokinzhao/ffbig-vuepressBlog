@@ -1,3 +1,3 @@
 ---
-title: JavaScript内存泄露治理
+title: JavaScript内存泄漏治理
 ---

@@ -1,5 +1,5 @@
 ---
-title: JavaScript垃圾回收和内存管理
+title: JavaScript内存管理及垃圾回收机制
 ---
 
 # JavaScript 内存管理
@@ -177,8 +177,7 @@ setInterval(replaceThing, 1000);
 
 参考：
 
-[深入浅出 Node.js](https://book.douban.com/subject/25768396/)
-
+[聊聊 V8 引擎的垃圾回收](https://segmentfault.com/a/1190000014383214)
 [MDN 内存管理](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management)
 
 ---

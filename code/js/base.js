@@ -109,3 +109,5 @@ Function.prototype.myNew = function () {
   // 如果构造函数返回值是对象原则返回这个对象，如果不是对象则返回新的实例对象
   return typeof ret === "object" ? ret : obj;
 };
+
+//函数柯理化
