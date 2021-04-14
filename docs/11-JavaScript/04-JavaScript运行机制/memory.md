@@ -1,5 +1,5 @@
 ---
-title: JavaScript内存管理及垃圾回收机制
+title: JavaScript内存管理及回收
 ---
 
 # JavaScript 内存管理
