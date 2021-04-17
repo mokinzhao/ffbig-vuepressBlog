@@ -1,5 +1,5 @@
 ---
-title: JavaScript之继承
+title: JavaScript-继承
 ---
 
 ## JavaScript 之继承

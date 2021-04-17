@@ -1,4 +1,8 @@
-# JavaScript 的运行机制
+---
+title: JavaScript的运行机制
+---
+
+## JavaScript 的运行机制
 
 了解 JavaScript 运行机制有助于我们避免 bug，并写出高性能的代码，当然还有一大用处就是有助于我们通过造火箭环节的面试。
 
