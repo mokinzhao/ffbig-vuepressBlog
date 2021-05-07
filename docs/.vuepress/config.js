@@ -2,7 +2,7 @@
  * @Author: mokinzhao
  * @Date: 2019-09-24 15:02:43
  * @Description:
- * @LastEditTime: 2021-04-19 00:16:25
+ * @LastEditTime: 2021-04-19 09:48:26
  */
 module.exports = {
   title: "全栈大前端",
@@ -110,16 +110,6 @@ module.exports = {
       },
 
       {
-        text: "低码平台",
-        items: [
-          {
-            text: "H5-dooring",
-            link: "http://h5.dooring.cn/",
-          },
-        ],
-      },
-
-      {
         text: "编程范式与设计模式",
         items: [
           {
@@ -176,6 +166,15 @@ module.exports = {
             text: "PWA",
             link:
               "https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps",
+          },
+        ],
+      },
+      {
+        text: "低码平台",
+        items: [
+          {
+            text: "H5-dooring",
+            link: "http://h5.dooring.cn/",
           },
         ],
       },

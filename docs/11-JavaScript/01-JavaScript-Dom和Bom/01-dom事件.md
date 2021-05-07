@@ -8,7 +8,7 @@ title: Javascript-DOM事件
 - [DOM 的事件流是什么？](#dom的事件流是什么？)
 - [什么是事件委托?](#什么是事件委托)
 
-前端框架大行其道的今天，我们直接操作 DOM 的时候变得更少了，因此不妨复习一下 DOM 的[基本知识](http://luopq.com/2015/11/30/javascript-dom/)
+前端框架大行其道的今天，我们直接操作 DOM 的时候变得更少了，因此不妨复习一下 DOM 的[基本知识](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model)
 
 ## DOM 的事件模型是什么？
 
