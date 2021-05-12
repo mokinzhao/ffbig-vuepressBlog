@@ -2,10 +2,6 @@
 title: HTTP协议
 ---
 
-# HTTP 协议
-
----
-
 ## Http 协议的历史演变
 
 - Http1.0 到 Http1.1

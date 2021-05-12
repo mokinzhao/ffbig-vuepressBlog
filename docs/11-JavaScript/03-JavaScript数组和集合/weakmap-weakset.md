@@ -1,3 +1,3 @@
 ---
-title: Javascript-map/weakMap/set/weakSet
+title: Javascript-weakMap/weakSet
 ---
