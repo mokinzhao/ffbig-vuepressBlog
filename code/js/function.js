@@ -14,7 +14,28 @@ const debounce = (fn, dealy) => {
     }, dealy);
   };
 };
+const debounce = (fn, dealy) => {
+  let timer = null;
+  return () => {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, arguments);
+    }, dealy);
+  };
+};
 //节流
+const thottle = (fn, dealy) => {
+  let timer = null;
+  return () => {
+    if (!timer) {
+      timer = setTimeout(() => {
+        fn.apply(this, arguments);
+        timer = null;
+      }, dealy);
+    }
+  };
+};
+
 const thottle = (fn, dealy) => {
   let timer = null;
   return () => {
