@@ -17,48 +17,42 @@ title: this指向
 代码：
 
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" />
     <title>Document</title>
     <style>
-        div {
-            width: 100px;
-            height: 100px;
-            background-color: green;
-            margin: 10px;
-        }
-
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        margin: 10px;
+      }
     </style>
-</head>
-<body>
-<script>
-    window.onload = function () {
-        var myDiv = document.getElementsByTagName('div');
+  </head>
+  <body>
+    <script>
+      window.onload = function () {
+        var myDiv = document.getElementsByTagName("div");
         for (var i = 0; i < myDiv.length; i++) {
-            myDiv[i].onclick = function () {
-                console.log(i);
-                console.log(this.id);
-            }
+          myDiv[i].onclick = function () {
+            console.log(i);
+            console.log(this.id);
+          };
         }
-
-    }
-
-</script>
-<section>
-    <div id="div0"> div0</div>
-    <div id="div1"> div1</div>
-    <div id="div2"> div2</div>
-    <div id="div3"> div3</div>
-    <div id="div4"> div4</div>
-</section>
-
-
-</body>
+      };
+    </script>
+    <section>
+      <div id="div0">div0</div>
+      <div id="div1">div1</div>
+      <div id="div2">div2</div>
+      <div id="div3">div3</div>
+      <div id="div4">div4</div>
+    </section>
+  </body>
 </html>
-
 ```
 
 点击其中的任何一个元素后，`i`的打印结果是 5。你可能会觉得很惊讶。我们来解释一下：
