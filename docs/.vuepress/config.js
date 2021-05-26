@@ -2,7 +2,7 @@
  * @Author: mokinzhao
  * @Date: 2019-09-24 15:02:43
  * @Description:
- * @LastEditTime: 2021-04-19 09:48:26
+ * @LastEditTime: 2021-05-26 17:04:41
  */
 module.exports = {
   title: "全栈大前端",
@@ -13,6 +13,7 @@ module.exports = {
     ["link", { rel: "icon", href: "/favicon.ico" }], // 增加一个自定义的 favicon(网页标签的图标)
     //增加manifest.json
     ["link", { rel: "manifest", href: "/manifest.json" }],
+    ["meta", { name: "baidu-site-verification", content: "code-Mu6nhhCufG" }], //<meta> 元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。
     [
       "script",
       {},
@@ -99,8 +100,7 @@ module.exports = {
           },
           {
             text: "力扣加加",
-            link:
-              "https://leetcode-solution-leetcode-pp.gitbook.io/leetcode-solution/",
+            link: "https://leetcode-solution-leetcode-pp.gitbook.io/leetcode-solution/",
           },
           {
             text: "labuladong的算法小抄",
@@ -130,8 +130,7 @@ module.exports = {
           },
           {
             text: "前端精读-设计模式",
-            link:
-              "https://github.com/ascoders/weekly/tree/master/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F",
+            link: "https://github.com/ascoders/weekly/tree/master/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F",
           },
         ],
       },
@@ -164,8 +163,7 @@ module.exports = {
           },
           {
             text: "PWA",
-            link:
-              "https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps",
+            link: "https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps",
           },
         ],
       },

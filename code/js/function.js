@@ -47,3 +47,18 @@ const thottle = (fn, dealy) => {
     }
   };
 };
+
+//防抖
+function debounce(fun, dealy) {
+  let timer = null;
+  return function () {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      fun.apply(this, arguments);
+    }, dealy);
+  };
+}
+
+

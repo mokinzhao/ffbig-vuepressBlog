@@ -4,6 +4,37 @@
  * @Description:算法高频
  */
 
+/**
+ * 两数之和
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+
+const twoSum = function (nums, target) {
+  const map = new Map();
+  const len = nums.length;
+  for (let i = 0; i < len; i++) {
+    const diff = target - nums[i];
+    if (map.has(diff)) {
+      return [map.get(diff), i];
+    }
+    map.set(nums[i], i);
+  }
+};
+
+const twoSum = function (nums, target) {
+  let map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    const element = array[i];
+    const diff = target - element;
+    if (map.has(diff)) {
+      return [map.get(diff), i];
+    }
+    map.set(nums[i], i);
+  }
+};
+
 //三数之和
 var threeSum = function (nums) {
   let ans = [];
