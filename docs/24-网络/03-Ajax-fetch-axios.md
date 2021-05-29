@@ -1,5 +1,5 @@
 ---
-title: Ajax/Axios/Fetch详解
+title: Axios/Ajax/Fetch区别
 ---
 
 ### Ajax

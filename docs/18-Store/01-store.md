@@ -1,5 +1,5 @@
 ---
-title: 状态管理的演进-Flux/Redux/Mobx/Dva/Recil
+title: 状态管理的演进-Flux/Redux/Redux-saga/Recil
 ---
 
 !['kasong'](https://mmbiz.qpic.cn/mmbiz_png/QibeeJCUD7SQcC4612ITyDTpfib4PXxqCY46shfzW3ibeyxIuffXficr8tMYB0fPbYeXLnIUZj3KICxKML3eq6CPWw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)

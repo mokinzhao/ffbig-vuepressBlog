@@ -56,18 +56,19 @@ var maxDepth = function (root) {
 */
 
 var isSymmetric = function (root) {
-  if (!root) {
-    return false;
-  }
-  if (root && !root.left && !root.left) {
+  return isMirror(root, root);
+};
+
+var isMirror = function (t1, t2) {
+  if (t1 == null && t2 == null) {
     return true;
   }
-  let root1 = root.left,
-    root2 = root.right;
-  if (!root1 || !root2) {
+  if (t1 == null || t2 == null) {
     return false;
   }
-  let flag = true;
-
-  const helper = () => {};
+  return (
+    t1.val == t2.val &&
+    isMirror(t1.right, t2.left) &&
+    isMirror(t1.left, t2.right)
+  );
 };

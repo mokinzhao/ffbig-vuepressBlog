@@ -1,3 +1,3 @@
 ---
-title: 微前端之Qiankun框架
+title: 微前端之Qiankun
 ---
