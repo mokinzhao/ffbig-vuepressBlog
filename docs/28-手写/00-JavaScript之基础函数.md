@@ -1,8 +1,8 @@
 ---
-title: JavaScript手写之基础函数
+title: JavaScript之基础函数
 ---
 
-## JavaScript 手写之基础函数
+## JavaScript 之基础函数
 
 - Call
 
