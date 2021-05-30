@@ -49,11 +49,105 @@ Function.prototype.call = function (context, ...args) {
 - Apply
 
 ```js
-11111;
+Function.prototype.apply = function (context, arr) {
+  var context = context || window;
+  context.fn = this;
+  var args = [];
+  var result;
+  if (!arr) {
+    result = context.fn();
+  } else {
+    var args = [];
+    for (let index = 0; index < arr.length; index++) {
+      args.push(arr(i));
+    }
+    result = eval("context.fn(" + args + ")");
+  }
+  delete context.fn;
+  return result;
+};
 ```
 
 - Bind
 
 ```js
-sadsda;
+//bind实现版本一
+Function.prototype.mybind = function (context, ...args) {
+  return (...newArgs) => {
+    return this.call(context, ...args, newArgs);
+  };
+};
+// bind实现版本二
+// 使用 call / apply 指定 this
+// 返回一个绑定函数
+// 当返回的绑定函数作为构造函数被new调用，绑定的上下文指向实例对象
+// 设置绑定函数的prototype 为原函数的prototype
+
+Function.prototype.mybind2 = function (context, ...args) {
+  const fn = this;
+  const bindFn = function (...newFnArgs) {
+    return fn.call(
+      this instanceof bindFn ? this : context,
+      ...args,
+      ...newFnArgs
+    );
+  };
+  bindFn.prototype = Object.create(fn.prototype);
+  return bindFn;
+};
 ```
+
+- New
+
+```js
+Function.prototype.myNew = function () {
+  //创建一个实例对象
+  var obj = new Object();
+  //取得外部传入得构造器
+  var Constructor = Array.prototype.shift.call(arguments);
+  //实现继承，实例可以访问构造器得属性
+  obj.__proto__ = Constructor.prototype;
+  //调用构造器，并改变其this 指向到实例
+  var ret = Constructor.apply(obj, arguments);
+  // 如果构造函数返回值是对象原则返回这个对象，如果不是对象则返回新的实例对象
+  return typeof ret === "object" ? ret : obj;
+};
+```
+
+- Object.create
+
+```js
+function create(proto) {
+  function Fn() {}
+  Fn.prototype = proto;
+  Fn.prototype.constructor = Fn;
+  return new Fn();
+}
+let demo = {
+  c: "123",
+};
+
+let cc = Object.create(demo);
+```
+
+- Object.is
+
+Object.is 解决主要这两个问题：
+
+```js
++0 === -0; // true
+NaN === NaN; // false
+```
+
+```js
+const is = (x, y) => {
+  if (x === y) {
+    //+0和-0应该不相等
+    return x !== 0 || y !== 0 || 1 / x === 1 / y;
+  } else {
+    return x !== x && y !== y;
+  }
+};
+```
+
+- Object.assign()
