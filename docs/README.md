@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /bg.jpg
+heroImage: /bg.jpeg
 heroText: 全栈大前端
 tagline: 系统积累，学练结合
 actionText: 开始旅程 →
