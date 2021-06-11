@@ -1,5 +1,5 @@
 ---
-title: Redux原理
+title: Redux
 ---
 
 本文主要讲述三方面内容：
@@ -211,7 +211,7 @@ redux 是一个状态管理器，那什么是状态呢？状态就是数据，�
 
 ```js
 let state = {
-  count: 1
+  count: 1,
 };
 ```
 
@@ -237,7 +237,7 @@ state.count = 2;
 ```js
 /*------count 的发布订阅者实践------*/
 let state = {
-  count: 1
+  count: 1,
 };
 let listeners = [];
 /*订阅*/
@@ -277,7 +277,7 @@ changeCount(4);
 我们尝试来解决这个问题，把公共的代码封装起来
 
 ```js
-const createStore = function(initState) {
+const createStore = function (initState) {
   let state = initState;
   let listeners = [];
   /*订阅*/
@@ -298,7 +298,7 @@ const createStore = function(initState) {
   return {
     subscribe,
     changeState,
-    getState
+    getState,
   };
 };
 ```
@@ -308,12 +308,12 @@ const createStore = function(initState) {
 ```js
 let initState = {
   counter: {
-    count: 0
+    count: 0,
   },
   info: {
     name: "",
-    description: ""
-  }
+    description: "",
+  },
 };
 let store = createStore(initState);
 store.subscribe(() => {
@@ -328,14 +328,14 @@ store.changeState({
   ...store.getState(),
   info: {
     name: "前端九部",
-    description: "我们都是前端爱好者！"
-  }
+    description: "我们都是前端爱好者！",
+  },
 });
 store.changeState({
   ...store.getState(),
   counter: {
-    count: 1
-  }
+    count: 1,
+  },
 });
 ```
 
@@ -347,7 +347,7 @@ store.changeState({
 
 ```js
 let initState = {
-  count: 0
+  count: 0,
 };
 let store = createStore(initState);
 store.subscribe(() => {
@@ -356,15 +356,15 @@ store.subscribe(() => {
 });
 /*自增*/
 store.changeState({
-  count: store.getState().count + 1
+  count: store.getState().count + 1,
 });
 /*自减*/
 store.changeState({
-  count: store.getState().count - 1
+  count: store.getState().count - 1,
 });
 /*我想随便改*/
 store.changeState({
-  count: "abc"
+  count: "abc",
 });
 ```
 
@@ -382,12 +382,12 @@ function plan(state, action) {
     case "INCREMENT":
       return {
         ...state,
-        count: state.count + 1
+        count: state.count + 1,
       };
     case "DECREMENT":
       return {
         ...state,
-        count: state.count - 1
+        count: state.count - 1,
       };
     default:
       return state;
@@ -399,7 +399,7 @@ function plan(state, action) {
 
 ```js
 /*增加一个参数 plan*/
-const createStore = function(plan, initState) {
+const createStore = function (plan, initState) {
   let state = initState;
   let listeners = [];
   function subscribe(listener) {
@@ -420,7 +420,7 @@ const createStore = function(plan, initState) {
   return {
     subscribe,
     changeState,
-    getState
+    getState,
   };
 };
 ```
@@ -429,7 +429,7 @@ const createStore = function(plan, initState) {
 
 ```js
 let initState = {
-  count: 0
+  count: 0,
 };
 /*把plan函数*/
 let store = createStore(plan, initState);
@@ -439,15 +439,15 @@ store.subscribe(() => {
 });
 /*自增*/
 store.changeState({
-  type: "INCREMENT"
+  type: "INCREMENT",
 });
 /*自减*/
 store.changeState({
-  type: "DECREMENT"
+  type: "DECREMENT",
 });
 /*我想随便改 计划外的修改是无效的！*/
 store.changeState({
-  count: "abc"
+  count: "abc",
 });
 ```
 
@@ -462,12 +462,12 @@ store.changeState({
 ```js
 let state = {
   counter: {
-    count: 0
+    count: 0,
   },
   info: {
     name: "前端九部",
-    description: "我们都是前端爱好者！"
-  }
+    description: "我们都是前端爱好者！",
+  },
 };
 ```
 
@@ -481,12 +481,12 @@ function counterReducer(state, action) {
     case "INCREMENT":
       return {
         ...state,
-        count: state.count + 1
+        count: state.count + 1,
       };
     case "DECREMENT":
       return {
         ...state,
-        count: state.count - 1
+        count: state.count - 1,
       };
     default:
       return state;
@@ -502,12 +502,12 @@ function InfoReducer(state, action) {
     case "SET_NAME":
       return {
         ...state,
-        name: action.name
+        name: action.name,
       };
     case "SET_DESCRIPTION":
       return {
         ...state,
-        description: action.description
+        description: action.description,
       };
     default:
       return state;
@@ -520,7 +520,7 @@ function InfoReducer(state, action) {
 ```js
 const reducer = combineReducers({
   counter: counterReducer,
-  info: InfoReducer
+  info: InfoReducer,
 });
 ```
 
@@ -554,16 +554,16 @@ function combineReducers(reducers) {
 ```js
 const reducer = combineReducers({
   counter: counterReducer,
-  info: InfoReducer
+  info: InfoReducer,
 });
 let initState = {
   counter: {
-    count: 0
+    count: 0,
   },
   info: {
     name: "前端九部",
-    description: "我们都是前端爱好者！"
-  }
+    description: "我们都是前端爱好者！",
+  },
 };
 let store = createStore(reducer, initState);
 store.subscribe(() => {
@@ -572,12 +572,12 @@ store.subscribe(() => {
 });
 /*自增*/
 store.dispatch({
-  type: "INCREMENT"
+  type: "INCREMENT",
 });
 /*修改 name*/
 store.dispatch({
   type: "SET_NAME",
-  name: "前端九部2号"
+  name: "前端九部2号",
 });
 ```
 
@@ -590,7 +590,7 @@ store.dispatch({
 ```js
 /* counter 自己的 state 和 reducer 写在一起*/
 let initState = {
-  count: 0
+  count: 0,
 };
 function counterReducer(state, action) {
   /*注意：如果 state 没有初始值，那就给他初始值！！*/
@@ -602,7 +602,7 @@ function counterReducer(state, action) {
     case "INCREMENT":
       return {
         ...state,
-        count: state.count + 1
+        count: state.count + 1,
       };
     default:
       return state;
@@ -613,7 +613,7 @@ function counterReducer(state, action) {
 我们修改下 createStore 函数，增加一行  `dispatch({ type: Symbol() })`
 
 ```js
-const createStore = function(reducer, initState) {
+const createStore = function (reducer, initState) {
   let state = initState;
   let listeners = [];
   function subscribe(listener) {
@@ -634,7 +634,7 @@ const createStore = function(reducer, initState) {
   return {
     subscribe,
     dispatch,
-    getState
+    getState,
   };
 };
 ```
@@ -671,7 +671,7 @@ console.dir(store.getState());
 const store = createStore(reducer);
 const next = store.dispatch;
 /*重写了store.dispatch*/
-store.dispatch = action => {
+store.dispatch = (action) => {
   console.log("this state", store.getState());
   console.log("action", action);
   next(action);
@@ -683,7 +683,7 @@ store.dispatch = action => {
 
 ```js
 store.dispatch({
-  type: "INCREMENT"
+  type: "INCREMENT",
 });
 ```
 
@@ -706,7 +706,7 @@ next state { counter: { count: 1 } }
 ```js
 const store = createStore(reducer);
 const next = store.dispatch;
-store.dispatch = action => {
+store.dispatch = (action) => {
   try {
     next(action);
   } catch (err) {
@@ -722,7 +722,7 @@ store.dispatch = action => {
 我现在既需要记录日志，又需要记录异常，怎么办？当然很简单了，两个函数合起来呗！
 
 ```js
-store.dispatch = action => {
+store.dispatch = (action) => {
   try {
     console.log("this state", store.getState());
     console.log("action", action);
@@ -741,13 +741,13 @@ store.dispatch = action => {
 ```js
 const store = createStore(reducer);
 const next = store.dispatch;
-const loggerMiddleware = action => {
+const loggerMiddleware = (action) => {
   console.log("this state", store.getState());
   console.log("action", action);
   next(action);
   console.log("next state", store.getState());
 };
-store.dispatch = action => {
+store.dispatch = (action) => {
   try {
     loggerMiddleware(action);
   } catch (err) {
@@ -759,7 +759,7 @@ store.dispatch = action => {
 2. 我们把 exceptionMiddleware 提取出来
 
 ```js
-const exceptionMiddleware = action => {
+const exceptionMiddleware = (action) => {
   try {
     /*next(action)*/
     loggerMiddleware(action);
@@ -773,7 +773,7 @@ store.dispatch = exceptionMiddleware;
 3. 现在的代码有一个很严重的问题，就是 exceptionMiddleware 里面写死了 loggerMiddleware，我们需要让  `next(action)`变成动态的，随便哪个中间件都可以
 
 ```js
-const exceptionMiddleware = next => action => {
+const exceptionMiddleware = (next) => (action) => {
   try {
     /*loggerMiddleware(action);*/
     next(action);
@@ -788,7 +788,7 @@ store.dispatch = exceptionMiddleware(loggerMiddleware);
 4. 同样的道理，loggerMiddleware 里面的 next 现在恒等于 store.dispatch，导致 loggerMiddleware 里面无法扩展别的中间件了！我们也把 next 写成动态的
 
 ```js
-const loggerMiddleware = next => action => {
+const loggerMiddleware = (next) => (action) => {
   console.log("this state", store.getState());
   console.log("action", action);
   next(action);
@@ -801,13 +801,13 @@ const loggerMiddleware = next => action => {
 ```js
 const store = createStore(reducer);
 const next = store.dispatch;
-const loggerMiddleware = next => action => {
+const loggerMiddleware = (next) => (action) => {
   console.log("this state", store.getState());
   console.log("action", action);
   next(action);
   console.log("next state", store.getState());
 };
-const exceptionMiddleware = next => action => {
+const exceptionMiddleware = (next) => (action) => {
   try {
     next(action);
   } catch (err) {
@@ -822,13 +822,13 @@ store.dispatch = exceptionMiddleware(loggerMiddleware(next));
 ```js
 const store = createStore(reducer);
 const next = store.dispatch;
-const loggerMiddleware = store => next => action => {
+const loggerMiddleware = (store) => (next) => (action) => {
   console.log("this state", store.getState());
   console.log("action", action);
   next(action);
   console.log("next state", store.getState());
 };
-const exceptionMiddleware = store => next => action => {
+const exceptionMiddleware = (store) => (next) => (action) => {
   try {
     next(action);
   } catch (err) {
@@ -889,7 +889,7 @@ const store = newCreateStore(reducer);
 实现 applyMiddleware
 
 ```js
-const applyMiddleware = function(...middlewares) {
+const applyMiddleware = function (...middlewares) {
   /*返回一个重写createStore的方法*/
   return function rewriteCreateStoreFunc(oldCreateStore) {
     /*返回重写后新的 createStore*/
@@ -898,10 +898,10 @@ const applyMiddleware = function(...middlewares) {
       const store = oldCreateStore(reducer, initState);
       /*给每个 middleware 传下store，相当于 const logger = loggerMiddleware(store);*/
       /* const chain = [exception, time, logger]*/
-      const chain = middlewares.map(middleware => middleware(store));
+      const chain = middlewares.map((middleware) => middleware(store));
       let dispatch = store.dispatch;
       /* 实现 exception(time((logger(dispatch))))*/
-      chain.reverse().map(middleware => {
+      chain.reverse().map((middleware) => {
         dispatch = middleware(dispatch);
       });
       /*2\. 重写 dispatch*/
@@ -992,7 +992,7 @@ unsubscribe();
 ```js
 /*const chain = middlewares.map(middleware => middleware(store));*/
 const simpleStore = { getState: store.getState };
-const chain = middlewares.map(middleware => middleware(simpleStore));
+const chain = middlewares.map((middleware) => middleware(simpleStore));
 ```
 
 #### compose
@@ -1002,7 +1002,7 @@ const chain = middlewares.map(middleware => middleware(simpleStore));
 ```js
 const chain = [A, B, C];
 let dispatch = store.dispatch;
-chain.reverse().map(middleware => {
+chain.reverse().map((middleware) => {
   dispatch = middleware(dispatch);
 });
 ```
@@ -1021,7 +1021,11 @@ export default function compose(...funcs) {
   if (funcs.length === 1) {
     return funcs[0];
   }
-  return funcs.reduce((a, b) => (...args) => a(b(...args)));
+  return funcs.reduce(
+    (a, b) =>
+      (...args) =>
+        a(b(...args))
+  );
 }
 ```
 
@@ -1079,13 +1083,13 @@ const createStore = function (reducer, initState) {
 
 ```js
 const reducer = combineReducers({
-  counter: counterReducer
+  counter: counterReducer,
 });
 const store = createStore(reducer);
 /*生成新的reducer*/
 const nextReducer = combineReducers({
   counter: counterReducer,
-  info: infoReducer
+  info: infoReducer,
 });
 /*replaceReducer*/
 store.replaceReducer(nextReducer);
@@ -1100,28 +1104,28 @@ bindActionCreators 我们很少很少用到，一般只有在 react-redux 的 co
 ```js
 const reducer = combineReducers({
   counter: counterReducer,
-  info: infoReducer
+  info: infoReducer,
 });
 const store = createStore(reducer);
 /*返回 action 的函数就叫 actionCreator*/
 function increment() {
   return {
-    type: "INCREMENT"
+    type: "INCREMENT",
   };
 }
 function setName(name) {
   return {
     type: "SET_NAME",
-    name: name
+    name: name,
   };
 }
 const actions = {
-  increment: function() {
+  increment: function () {
     return store.dispatch(increment.apply(this, arguments));
   },
-  setName: function() {
+  setName: function () {
     return store.dispatch(setName.apply(this, arguments));
-  }
+  },
 };
 /*注意：我们可以把 actions 传到任何地方去*/
 /*其他地方在实现自增的时候，根本不知道 dispatch，actionCreator等细节*/
@@ -1140,7 +1144,7 @@ const actions = bindActionCreators({ increment, setName }, store.dispatch);
 ```js
 /*核心的代码在这里，通过闭包隐藏了 actionCreator 和 dispatch*/
 function bindActionCreator(actionCreator, dispatch) {
-  return function() {
+  return function () {
     return dispatch(actionCreator.apply(this, arguments));
   };
 }

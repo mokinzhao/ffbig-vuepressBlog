@@ -16,8 +16,8 @@ module.exports = {
   entry: "./a.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js"
-  }
+    filename: "bundle.js",
+  },
 };
 ```
 
@@ -26,7 +26,7 @@ b.js
 ```js
 console.log("module b runs");
 export default {
-  name: "b"
+  name: "b",
 };
 ```
 
@@ -35,7 +35,7 @@ c.js
 ```js
 import b from "./b";
 export default {
-  name: "c"
+  name: "c",
 };
 ```
 
@@ -80,13 +80,13 @@ console.log(c.name);
 // c.js
 import b from "./b";
 export default {
-  name: "c"
+  name: "c",
 };
 // 最后被转化为
 var __WEBPACK_IMPORTED_MODULE_0__b__ = __webpack_require__(0);
 // 这里需要特别注意一点， Webpack 将 a 属性作为模块的 default 值
 __webpack_exports__["a"] = {
-  name: "c"
+  name: "c",
 };
 ```
 
@@ -117,10 +117,10 @@ function (module, __webpack_exports__, __webpack_require__) {
 // 假设 c.js 打包后的模块 id 为 1
 // 那么对应的 modules 和 installedModules 如下
 // 存的是一个函数
-modules[1] = function(module, __webpack_exports__, __webpack_require__) {
+modules[1] = function (module, __webpack_exports__, __webpack_require__) {
   var __WEBPACK_IMPORTED_MODULE_0__b__ = __webpack_require__(0);
   __webpack_exports__["a"] = {
-    name: "c"
+    name: "c",
   };
 };
 // 存的是一个对象
@@ -129,9 +129,9 @@ installedModules[1] = {
   l: true,
   exports: {
     a: {
-      name: "c"
-    }
-  }
+      name: "c",
+    },
+  },
 };
 ```
 
@@ -174,7 +174,7 @@ function __webpack_require__(moduleId) {
 ### 最后，我们来改造一下 bundle.js
 
 ```js
-(function(modules) {
+(function (modules) {
   // 存放模块初始化函数
   const installedModules = {};
 
@@ -186,7 +186,7 @@ function __webpack_require__(moduleId) {
     var module = (installedModules[moduleId] = {
       i: moduleId,
       l: false,
-      exports: {}
+      exports: {},
     });
     // 从 modules 中找到对应的模块初始化函数并执行
     modules[moduleId].call(module.exports, module, module.exports, require);
@@ -198,27 +198,27 @@ function __webpack_require__(moduleId) {
   require(2);
 })([
   /* b.js, moduleId = 0 */
-  function(module, exports, require) {
+  function (module, exports, require) {
     console.log("module b runs");
     exports["a"] = {
-      name: "b"
+      name: "b",
     };
   },
   /* c.js, moduleId = 1 */
-  function(module, exports, require) {
+  function (module, exports, require) {
     const module_b = require(0);
 
     exports["a"] = {
-      name: "c"
+      name: "c",
     };
   },
   /* a.js, moduleId = 2 */
-  function(module, exports, require) {
+  function (module, exports, require) {
     const module_b = require(0);
     const module_c = require(1);
     console.log(module_b["a"].name);
     console.log(module_c["a"].name);
-  }
+  },
 ]);
 ```
 

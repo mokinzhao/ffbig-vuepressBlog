@@ -23,6 +23,19 @@ const debounce = (fn, dealy) => {
     }, dealy);
   };
 };
+
+const deounce = function (fn, dealy) {
+  let timer = null;
+  return function () {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, arguments);
+    }, dealy);
+  };
+};
+
 //节流
 const thottle = (fn, dealy) => {
   let timer = null;
@@ -47,7 +60,17 @@ const thottle = (fn, dealy) => {
     }
   };
 };
-
+const Thottle = function (fn, dealy) {
+  let timer = null;
+  return function () {
+    if (!timer) {
+      let timer = setTimeout(() => {
+        fn.apply(this, arguments);
+        timer = null;
+      }, dealy);
+    }
+  };
+};
 //防抖
 function debounce(fun, dealy) {
   let timer = null;
@@ -60,5 +83,3 @@ function debounce(fun, dealy) {
     }, dealy);
   };
 }
-
-
