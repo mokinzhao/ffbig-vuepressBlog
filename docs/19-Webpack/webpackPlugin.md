@@ -26,7 +26,7 @@ const {
   AsyncParallelBailHook,
   AsyncSeriesHook,
   AsyncSeriesBailHook,
-  AsyncSeriesWaterfallHook
+  AsyncSeriesWaterfallHook,
 } = require("tapable");
 ```
 
@@ -78,7 +78,11 @@ class Car {
     this.hooks = {
       accelerate: new SyncHook(["newSpeed"]),
       break: new SyncHook(),
-      calculateRoutes: new AsyncParallelHook(["source", "target", "routesList"])
+      calculateRoutes: new AsyncParallelHook([
+        "source",
+        "target",
+        "routesList",
+      ]),
     };
   }
 }
@@ -88,7 +92,7 @@ myCar.hooks.break.tap("WarningLampPlugin", () =>
   console.log("WarningLampPlugin")
 );
 //绑定同步钩子 并传参
-myCar.hooks.accelerate.tap("LoggerPlugin", newSpeed =>
+myCar.hooks.accelerate.tap("LoggerPlugin", (newSpeed) =>
   console.log(`Accelerating to ${newSpeed}`)
 );
 //绑定一个异步Promise钩子
@@ -113,7 +117,7 @@ myCar.hooks.calculateRoutes.promise("i", "love", "tapable").then(
   () => {
     console.timeEnd("cost");
   },
-  err => {
+  (err) => {
     console.error(err);
     console.timeEnd("cost");
   }
@@ -143,7 +147,7 @@ myCar.hooks.calculateRoutes.tapAsync(
     }, 2000);
   }
 );
-myCar.hooks.calculateRoutes.callAsync("i", "like", "tapable", err => {
+myCar.hooks.calculateRoutes.callAsync("i", "like", "tapable", (err) => {
   console.timeEnd("cost");
   if (err) console.log(err);
 });
@@ -179,11 +183,15 @@ class Compiler {
     this.hooks = {
       accelerate: new SyncHook(["newSpeed"]),
       break: new SyncHook(),
-      calculateRoutes: new AsyncParallelHook(["source", "target", "routesList"])
+      calculateRoutes: new AsyncParallelHook([
+        "source",
+        "target",
+        "routesList",
+      ]),
     };
     let plugins = options.plugins;
     if (plugins && plugins.length > 0) {
-      plugins.forEach(plugin => plugin.apply(this));
+      plugins.forEach((plugin) => plugin.apply(this));
     }
   }
   run() {
@@ -200,7 +208,7 @@ class Compiler {
   }
   calculateRoutes() {
     const args = Array.from(arguments);
-    this.hooks.calculateRoutes.callAsync(...args, err => {
+    this.hooks.calculateRoutes.callAsync(...args, (err) => {
       console.timeEnd("cost");
       if (err) console.log(err);
     });
@@ -229,7 +237,7 @@ class MyPlugin {
     conpiler.hooks.break.tap("WarningLampPlugin", () =>
       console.log("WarningLampPlugin")
     );
-    conpiler.hooks.accelerate.tap("LoggerPlugin", newSpeed =>
+    conpiler.hooks.accelerate.tap("LoggerPlugin", (newSpeed) =>
       console.log(`Accelerating to ${newSpeed}`)
     );
     conpiler.hooks.calculateRoutes.tapAsync(
@@ -247,7 +255,7 @@ class MyPlugin {
 //向 plugins 属性传入 new 实例
 const myPlugin = new MyPlugin();
 const options = {
-  plugins: [myPlugin]
+  plugins: [myPlugin],
 };
 let compiler = new Compiler(options);
 compiler.run();
@@ -341,7 +349,7 @@ if (firstOptions.watch || options.watch) {
   const watchOptions =
     firstOptions.watchOptions || firstOptions.watch || options.watch || {};
   if (watchOptions.stdin) {
-    process.stdin.on("end", function(_) {
+    process.stdin.on("end", function (_) {
       process.exit(); // eslint-disable-line
     });
     process.stdin.resume();
@@ -413,7 +421,7 @@ compiler.hooks.make.tapAsync("DllEntryPlugin", (compilation, callback) => {
         const dep = new SingleEntryDependency(e);
         dep.loc = {
           name: this.name,
-          index: idx
+          index: idx,
         };
         return dep;
       }),
@@ -448,7 +456,7 @@ compiler.hooks.entryOption.tap("DllPlugin", (context, entry) => {
     throw new Error("DllPlugin: supply an Array as entry");
   };
   if (typeof entry === "object" && !Array.isArray(entry)) {
-    Object.keys(entry).forEach(name => {
+    Object.keys(entry).forEach((name) => {
       itemToPlugin(entry[name], name).apply(compiler);
     });
   } else {
@@ -554,7 +562,7 @@ class MyPlugin {
     conpiler.hooks.break.tap("WarningLampPlugin", () =>
       console.log("WarningLampPlugin")
     );
-    conpiler.hooks.accelerate.tap("LoggerPlugin", newSpeed =>
+    conpiler.hooks.accelerate.tap("LoggerPlugin", (newSpeed) =>
       console.log(`Accelerating to ${newSpeed}`)
     );
     conpiler.hooks.calculateRoutes.tapAsync(
@@ -590,11 +598,12 @@ class MyPlugin {
     this.externalModules = {};
   }
   apply(compiler) {
-    var reg = /("([^\\\"]*(\\.)?)*")|('([^\\\']*(\\.)?)*')|(\/{2,}.*?(\r|\n))|(\/\*(\n|.)*?\*\/)|(\/\*\*\*\*\*\*\/)/g;
-    compiler.hooks.emit.tap("CodeBeautify", compilation => {
-      Object.keys(compilation.assets).forEach(data => {
+    var reg =
+      /("([^\\\"]*(\\.)?)*")|('([^\\\']*(\\.)?)*')|(\/{2,}.*?(\r|\n))|(\/\*(\n|.)*?\*\/)|(\/\*\*\*\*\*\*\/)/g;
+    compiler.hooks.emit.tap("CodeBeautify", (compilation) => {
+      Object.keys(compilation.assets).forEach((data) => {
         let content = compilation.assets[data].source(); // 欲处理的文本
-        content = content.replace(reg, function(word) {
+        content = content.replace(reg, function (word) {
           // 去除注释后的文本
           return /^\/{2,}/.test(word) ||
             /^\/\*!/.test(word) ||
@@ -608,7 +617,7 @@ class MyPlugin {
           },
           size() {
             return content.length;
-          }
+          },
         };
       });
     });
@@ -753,13 +762,3 @@ module.exports = {
 [插件地址](https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fwallaceyuan%2FCodeBeautify)
 
 ---
-
-## 公众号
-
-想要实时关注笔者最新的文章和最新的文档更新请关注公众号**程序员面试官**,后续的文章会优先在公众号更新.
-
-**简历模板:** 关注公众号回复「模板」获取
-
-**《前端面试手册》:** 配套于本指南的突击手册,关注公众号回复「fed」获取
-
-![2019-08-12-03-18-41](https://xiaomuzhu-image.oss-cn-beijing.aliyuncs.com/d846f65d5025c4b6c4619662a0669503.png)

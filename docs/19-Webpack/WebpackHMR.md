@@ -71,11 +71,11 @@ module.exports = {
   entry: "./index.js",
   output: {
     filename: "bundle.js",
-    path: path.join(__dirname, "/")
+    path: path.join(__dirname, "/"),
   },
   devServer: {
-    hot: true
-  }
+    hot: true,
+  },
 };
 ```
 
@@ -237,13 +237,13 @@ delete installedModules[moduleId];delete outdatedDependencies[moduleId];
 ```js
 module.hot
   .check(true)
-  .then(function(updatedModules) {
+  .then(function (updatedModules) {
     if (!updatedModules) {
       return window.location.reload();
     }
     // ...
   })
-  .catch(function(err) {
+  .catch(function (err) {
     var status = module.hot.status();
     if (["abort", "fail"].indexOf(status) >= 0) {
       window.location.reload();
@@ -256,7 +256,7 @@ dev-server 先验证是否有更新，没有代码更新的话，重载浏览器
 ```js
 // index.js
 if (module.hot) {
-  module.hot.accept("./hello.js", function() {
+  module.hot.accept("./hello.js", function () {
     div.innerHTML = hello();
   });
 }
@@ -269,13 +269,3 @@ if (module.hot) {
 这篇文章的作用并不是对 webpack HMR 的详尽解析，很多细节方面也没过多讨论，而只想起到一个抛砖引玉的作用，给大家展现一个 HMR 概述的工作流程，如果对 webpack 感兴趣，想了解 webpack HMR 更多的底层细节，相信阅读 webpack 源码将是一个不错的选择，也希望这篇文章能够对你阅读源码有所帮助，这才是我真正的写作目的。
 
 ---
-
-## 公众号
-
-想要实时关注笔者最新的文章和最新的文档更新请关注公众号**程序员面试官**,后续的文章会优先在公众号更新.
-
-**简历模板:** 关注公众号回复「模板」获取
-
-**《前端面试手册》:** 配套于本指南的突击手册,关注公众号回复「fed」获取
-
-![2019-08-12-03-18-41](https://xiaomuzhu-image.oss-cn-beijing.aliyuncs.com/d846f65d5025c4b6c4619662a0669503.png)
